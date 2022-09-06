@@ -1,3 +1,7 @@
+provider "aws" {
+   region = "us-east-2"
+ }
+
 #vpc#
 
 resource "aws_vpc" "aws-vpc" {
