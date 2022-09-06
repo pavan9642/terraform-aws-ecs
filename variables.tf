@@ -1,58 +1,47 @@
-variable "create" {
-  description = "Determines whether resources will be created (affects all resources)"
-  type        = bool
-  default     = true
-}
-
-variable "tags" {
-  description = "A map of tags to add to all resources"
-  type        = map(string)
-  default     = {}
-}
-
-################################################################################
-# Cluster
-################################################################################
-
-variable "cluster_name" {
-  description = "Name of the cluster (up to 255 letters, numbers, hyphens, and underscores)"
+variable "aws_access_key" {
   type        = string
-  default     = ""
+  description = "AKIAX5WIIHNEPODRSLP5"
 }
 
-variable "cluster_configuration" {
-  description = "The execute command configuration for the cluster"
-  type        = any
-  default     = {}
+variable "aws_secret_key" {
+  type        = string
+  description = "iYjVRMYYrLl5zVda8+iTBMiGvXWHSQZx87nPRXTF"
 }
 
-variable "cluster_settings" {
-  description = "Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster"
-  type        = map(string)
-  default = {
-    name  = "containerInsights"
-    value = "enabled"
-  }
+variable "aws_region" {
+  type        = string
+  description = "AWS Region"
 }
 
-################################################################################
-# Capacity Providers
-################################################################################
-
-variable "default_capacity_provider_use_fargate" {
-  description = "Determines whether to use Fargate or autoscaling for default capacity provider strategy"
-  type        = bool
-  default     = true
+variable "aws_cloudwatch_retention_in_days" {
+  type        = number
+  description = "AWS CloudWatch Logs Retention in Days"
+  default     = 1
 }
 
-variable "fargate_capacity_providers" {
-  description = "Map of Fargate capacity provider definitions to use for the cluster"
-  type        = any
-  default     = {}
+variable "app_name" {
+  type        = string
+  description = "Application Name"
 }
 
-variable "autoscaling_capacity_providers" {
-  description = "Map of autoscaling capacity provider definitons to create for the cluster"
-  type        = any
-  default     = {}
+variable "app_environment" {
+  type        = string
+  description = "Application Environment"
+}
+
+variable "cidr" {
+  description = "The CIDR block for the VPC."
+  default     = "10.0.0.0/16"
+}
+
+variable "public_subnets" {
+  description = "List of public subnets"
+}
+
+variable "private_subnets" {
+  description = "List of private subnets"
+}
+
+variable "availability_zones" {
+  description = "List of availability zones"
 }
